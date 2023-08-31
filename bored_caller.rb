@@ -1,5 +1,3 @@
-#!/bin/ruby
-
 # frozen_string_literal: true
 
 require 'uri'
@@ -7,6 +5,7 @@ require 'net/http'
 require 'json'
 
 require_relative 'cli_parser'
+require_relative 'db_manager'
 
 class Caller
   BASE_URI = 'https://www.boredapi.com/api/activity/'
@@ -15,12 +14,16 @@ class Caller
   def initialize(args)
     @args = args
     @query = build_query
+    @db_manager = DbManager.new
   end
 
   def call
     query = @query.empty? ? '' : "?#{@query}"
     final_uri = URI("#{BASE_URI}#{query}")
     response = Net::HTTP.get_response(final_uri)
+    activity = JSON.parse(response.body)
+    @db_manager.add_activity(activity)
+
     puts "Response: #{response.body}"
   end
 
@@ -42,6 +45,17 @@ class Caller
   end
 end
 
+def print_activities(activities)
+  activities.each do |a|
+    puts "Activity: #{a[:activity]}"
+    puts "Accessibility: #{a[:accessibility]}"
+    puts "Type: #{a[:type]}"
+    puts "Participants: #{a[:participants]}"
+    puts "Price: #{a[:price]}"
+    puts "\n"
+  end
+end
+
 def main
   cli_parser = CliParser.new(ARGV)
   cli_parser.call
@@ -50,7 +64,10 @@ def main
 
   case cli_parser.command
   when :new then Caller.new(cli_parser.args).call
-  when :list then puts 'Listing all the things to be listed *brrrrrrrrr*'
+  when :list
+    db_manager = DbManager.new
+    activities = db_manager.activities.all
+    print_activities(activities)
   end
 end
 
