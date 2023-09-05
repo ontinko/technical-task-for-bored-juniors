@@ -18,9 +18,11 @@ In order to run the program, execute the script `my_program` with your arguments
 
 ```sh
 ./my_program list
-# or
+```
+```sh
 ./my_program new
-#or
+```
+```sh
 ./my_program new --type recreational
 ```
 
