@@ -16,4 +16,6 @@ gem 'sqlite3', '~> 1.6'
 
 gem 'rspec', '~> 3.12'
 
-gem "factory_bot", "~> 6.3"
+gem 'factory_bot', '~> 6.3'
+
+gem 'ffaker', '~> 2.22'

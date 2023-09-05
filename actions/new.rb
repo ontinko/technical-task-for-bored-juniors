@@ -35,6 +35,7 @@ class New < BaseAction
   end
 
   def print_activity(activity)
+    puts "key: #{activity['key']}"
     puts "activity: #{activity['activity']}"
     puts "accessibility: #{activity['accessibility']}"
     puts "type: #{activity['type']}"

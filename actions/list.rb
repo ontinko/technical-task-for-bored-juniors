@@ -12,6 +12,7 @@ class List < BaseAction
 
     return puts 'No activities saved!' if activities.empty?
 
+    puts 'Activities:'
     Activity.all.each do |a|
       puts ''
       puts "activity: #{a[:activity]}"
@@ -19,7 +20,6 @@ class List < BaseAction
       puts "type: #{a[:type]}"
       puts "participants: #{a[:participants]}"
       puts "price: #{a[:price]}"
-      puts "\n"
     end
   end
 end

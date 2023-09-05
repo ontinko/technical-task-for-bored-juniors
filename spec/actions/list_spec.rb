@@ -27,8 +27,26 @@ RSpec.describe List do
     end
 
     context 'when the database is populated' do
+      let!(:activity1) { create(:activity) }
+      let!(:activity2) { create(:activity) }
+
       it 'does not raise an error' do
         expect { result }.not_to raise_error
+      end
+
+      it 'prints out the relevant message' do
+        output_message = "Activities:\n\n" \
+                         "activity: #{activity1[:activity]}\n" \
+                         "accessibility: #{activity1[:accessibility]}\n" \
+                         "type: #{activity1[:type]}\n" \
+                         "participants: #{activity1[:participants]}\n" \
+                         "price: #{activity1[:price]}\n\n" \
+                         "activity: #{activity2[:activity]}\n" \
+                         "accessibility: #{activity2[:accessibility]}\n" \
+                         "type: #{activity2[:type]}\n" \
+                         "participants: #{activity2[:participants]}\n" \
+                         "price: #{activity2[:price]}\n"
+        expect { result }.to output(output_message).to_stdout
       end
     end
   end
