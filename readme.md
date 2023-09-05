@@ -1,5 +1,7 @@
 # Technical Challenge for Juniors
 
+### [Original repo](https://github.com/ejariza-evowill/technical-task-for-bored-juniors/tree/main)
+
 ## Usage
 
 ### Preparation
