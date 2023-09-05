@@ -13,7 +13,7 @@ class List < BaseAction
     return puts 'No activities saved!' if activities.empty?
 
     puts 'Activities:'
-    Activity.all.each do |a|
+    Activity.order(Sequel.desc(:created_at)).limit(5).each do |a|
       puts ''
       puts "activity: #{a[:activity]}"
       puts "accessibility: #{a[:accessibility]}"

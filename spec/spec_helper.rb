@@ -5,6 +5,11 @@ require 'webmock/rspec'
 require 'sequel'
 
 DB = Sequel.connect('sqlite://db/test.sqlite3')
+DB.tables.each do |t|
+  DB.drop_table(t)
+end
+DB.run('VACUUM')
+
 BASE_URI = 'https://www.boredapi.com/api/activity/'
 
 unless DB.table_exists?(:activities)
@@ -18,6 +23,7 @@ unless DB.table_exists?(:activities)
     Float :price
     String :link
     Float :accessibility
+    DateTime :created_at
   end
 end
 

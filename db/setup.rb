@@ -17,6 +17,7 @@ def setup_db
     Float :price
     String :link
     Float :accessibility
+    DateTime :created_at
   end
 end
 
