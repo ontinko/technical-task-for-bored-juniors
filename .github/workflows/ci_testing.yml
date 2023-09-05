@@ -2,15 +2,12 @@ name: CI testing
 
 on: [push]
 
-permissions:
-  contents: read
-
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.0']
+        ruby-version: ['3.2.2']
 
     steps:
     - uses: actions/checkout@v3
