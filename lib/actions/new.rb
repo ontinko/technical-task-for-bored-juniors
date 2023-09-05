@@ -16,7 +16,7 @@ class New < BaseAction
   }.freeze
 
   def call
-    parse(@args)
+    transform_args(@args)
 
     api_caller = ApiCaller.new(@args)
     api_caller.call
@@ -49,7 +49,7 @@ class New < BaseAction
     raise ApplicationError, message
   end
 
-  def parse(args)
+  def transform_args(args)
     return if args.empty?
 
     parsed_args = {}

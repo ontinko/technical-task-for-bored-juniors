@@ -13,7 +13,7 @@ class CliHandler
   end
 
   def call
-    raise ApplicationError, 'Unspecified action' if @argv.empty?
+    handle_error('Unspecified action') if @argv.empty?
 
     parse_params
 
@@ -21,11 +21,15 @@ class CliHandler
     when LIST_COMMAND then List.call(@args)
     when NEW_COMMAND then New.call(@args)
     else
-      raise ApplicationError, 'Invalid agruments'
+      handle_error('Invalid agruments')
     end
   end
 
   private
+
+  def handle_error(message)
+    raise ApplicationError, message
+  end
 
   def parse_params
     i = 1
