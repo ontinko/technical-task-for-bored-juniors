@@ -10,12 +10,10 @@ class CliHandler
   def initialize(argv)
     @argv = argv
     @args = {}
-    @failure = false
-    @message = ''
   end
 
   def call
-    return handle_error('Unspecified action') if @argv.empty?
+    raise ApplicationError, 'Unspecified action' if @argv.empty?
 
     parse_params
 
@@ -23,7 +21,7 @@ class CliHandler
     when LIST_COMMAND then List.call(@args)
     when NEW_COMMAND then New.call(@args)
     else
-      puts 'Error: invalid arguments'
+      raise ApplicationError, 'Invalid agruments'
     end
   end
 

@@ -3,17 +3,16 @@
 require 'uri'
 require 'net/http'
 require 'json'
+require_relative 'errors/application_error'
 
 class ApiCaller
-  attr_reader :failure, :activity
+  attr_reader :activity
 
   BASE_URI = 'https://www.boredapi.com/api/activity/'
 
   def initialize(args)
     @args = args
     @activity = nil
-    @failure = false
-    @message = ''
   end
 
   def call
@@ -27,10 +26,6 @@ class ApiCaller
     handle_error('No connection')
   end
 
-  def error
-    puts "Error: #{@message}"
-  end
-
   private
 
   def build_query
@@ -38,8 +33,7 @@ class ApiCaller
   end
 
   def handle_error(message)
-    @failure = true
-    @message = message
+    raise ApplicationError, message
   end
 
   def error_in_body?(body)

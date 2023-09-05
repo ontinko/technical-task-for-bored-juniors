@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base_action'
+require_relative '../errors/application_error'
 require_relative '../models/activity'
 require_relative '../api_caller'
 
@@ -14,33 +15,23 @@ class New < BaseAction
     accessibility_max: :maxaccessibility
   }.freeze
 
-  def initialize(args)
-    super
-    @failure = false
-    @message = ''
-  end
-
   def call
     parse(@args)
-    return puts @message if @failure
 
     api_caller = ApiCaller.new(@args)
     api_caller.call
-    return api_caller.error if api_caller.failure
 
     print_activity(api_caller.activity)
     save_activity(api_caller.activity)
-    return puts @message if @failure
-
-    puts 'New activity added!'
   end
 
   private
 
   def save_activity(activity)
     Activity.create(**activity)
+    puts 'New activity added!'
   rescue Sequel::UniqueConstraintViolation
-    handle_error('Activity already saved!')
+    puts 'Activity already saved!'
   end
 
   def print_activity(activity)
@@ -54,8 +45,7 @@ class New < BaseAction
   end
 
   def handle_error(message)
-    @failure = true
-    @message = message
+    raise ApplicationError, message
   end
 
   def parse(args)
@@ -64,8 +54,8 @@ class New < BaseAction
     parsed_args = {}
 
     args.each_key do |key|
-      return handle_error("Unknown parameter #{key} for new") unless ARGS_MAPPING.key?(key)
-      return handle_error("Unspeficied value for #{key}") if args[key].nil?
+      handle_error("Unknown parameter #{key} for new") unless ARGS_MAPPING.key?(key)
+      handle_error("Unspeficied value for #{key}") if args[key].nil?
 
       parsed_args[ARGS_MAPPING[key]] = args[key]
     end

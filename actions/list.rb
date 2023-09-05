@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+require_relative '../errors/application_error'
 require_relative '../models/activity'
 require_relative 'base_action'
 
 class List < BaseAction
   def call
-    return puts 'Error: list command does not take arguments' unless @args.empty?
+    raise ApplicationError, 'List command takes no arguments!' unless @args.empty?
 
     activities = Activity.all
 

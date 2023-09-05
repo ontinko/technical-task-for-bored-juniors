@@ -3,4 +3,8 @@
 require_relative 'setup'
 require_relative 'cli_handler'
 
-CliHandler.new(ARGV).call
+begin
+  CliHandler.new(ARGV).call
+rescue ApplicationError => e
+  puts "Error: #{e.message}"
+end
