@@ -2,6 +2,18 @@
 
 ## Usage
 
+### Preparation
+
+First, install the dependencies:
+
+```sh
+bundle install
+```
+
+Also, make sure you have Ruby `3.1.2` installed
+
+### Execution
+
 In order to run the program, execute the script `my_program` with your arguments, like so:
 
 ```sh
@@ -17,6 +29,8 @@ If this doesn't work, make sure that the file is executable:
 ```sh
 chmod + x ./my_program
 ```
+
+### Tests
 
 To run tests:
 
