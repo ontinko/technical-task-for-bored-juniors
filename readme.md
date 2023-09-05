@@ -18,6 +18,8 @@ If this doesn't work, make sure that the file is executable:
 chmod + x ./my_program
 ```
 
+## Description
+
 For this challenge, you are going to use the API of [bored API](https://www.boredapi.com/). This API gives us a random activity to do every time you call it, for example, if you make the following call:
 
 ```
@@ -55,7 +57,7 @@ Clone this repository and create a new one on your own GitHub account. When you 
 
 ### Command line program
 3. Create a simple command line program that will use the API wrapper and the database class to get a random activity and save it in the database. The program should accept parameters to filter the activities by type, number of participants, price range, and accessibility range. The command should look like this:
-    
+
     ```bash
     my_program new --type education --participants 1 --price_min 0.1 --price_max 30 --accessibility_min 0.1 --accessibility_max 0.5
     ```
@@ -63,7 +65,7 @@ This command should get a random activity with the type education, 1 participant
 
 
 4. Add another command to the program that will return the last activities saved in the database. The command should look like this:
-    
+
     ```bash
     my_program list
     ```
