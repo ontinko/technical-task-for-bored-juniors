@@ -7,6 +7,7 @@ require 'json'
 RSpec.describe CliHandler do
   describe '.call' do
     subject(:handler) { described_class.new(argv) }
+
     let(:argv) { [] }
     let(:response_body) { { activity: 'hehe', key: 'hoho' }.to_json }
     let(:response_status) { 200 }
@@ -33,6 +34,7 @@ RSpec.describe CliHandler do
 
     context 'when new command has unpermitted parameters' do
       let(:argv) { %w[new --language ruby] }
+
       it 'raises ApplicationError' do
         expect { handler.call }.to raise_error(ApplicationError)
       end

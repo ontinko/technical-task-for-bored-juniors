@@ -7,6 +7,7 @@ require 'json'
 RSpec.describe New do
   describe '.call' do
     subject(:result) { described_class.call(args) }
+
     let(:args) { { type: 'recreational' } }
     let(:response_body) { '' }
     let(:response_status) { 200 }

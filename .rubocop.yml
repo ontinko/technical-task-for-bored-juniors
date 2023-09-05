@@ -1,5 +1,6 @@
 require:
   - rubocop-performance
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 3.0
@@ -24,6 +25,9 @@ Style/RegexpLiteral:
 Layout/LineLength:
   Max: 120
 
+Metrics/MethodLength:
+  Max: 20
+
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
@@ -46,3 +50,9 @@ Layout/ClassStructure:
       - protected_methods
       - private_methods
 
+# RSpec
+
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/IndexedLet:
+  Enabled: false

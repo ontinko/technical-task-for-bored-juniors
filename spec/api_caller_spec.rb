@@ -7,6 +7,7 @@ require 'json'
 RSpec.describe ApiCaller do
   describe '.call' do
     subject(:caller) { described_class.new(args) }
+
     let(:args) { {} }
     let(:response_body) { { activity: 'hehe', key: 'hoho' }.to_json }
     let(:response_status) { 200 }

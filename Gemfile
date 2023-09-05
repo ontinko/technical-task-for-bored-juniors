@@ -21,3 +21,5 @@ gem 'factory_bot', '~> 6.3'
 gem 'ffaker', '~> 2.22'
 
 gem 'webmock', '~> 3.19'
+
+gem 'rubocop-rspec', '~> 2.23'

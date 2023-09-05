@@ -5,6 +5,8 @@ require_relative '../models/activity'
 require_relative 'base_action'
 
 class List < BaseAction
+  # can't avoid the warning without unnecessary splitting the functionality, disabling the cop
+  # rubocop:disable Metrics/AbcSize
   def call
     raise ApplicationError, 'List command takes no arguments!' unless @args.empty?
 
@@ -24,4 +26,5 @@ class List < BaseAction
       puts "link: #{a[:link]}"
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end

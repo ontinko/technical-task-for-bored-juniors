@@ -6,6 +6,7 @@ require_relative '../../lib/errors/application_error'
 RSpec.describe List do
   describe '.call' do
     subject(:result) { described_class.call(args) }
+
     let(:args) { {} }
 
     context 'when params are invalid' do
