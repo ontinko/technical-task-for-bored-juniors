@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseAction
   def self.call(args)
     instance = new(args)
