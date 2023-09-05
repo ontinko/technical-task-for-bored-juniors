@@ -8,12 +8,12 @@ class List < BaseAction
   def call
     raise ApplicationError, 'List command takes no arguments!' unless @args.empty?
 
-    activities = Activity.all
+    activities = Activity.order(Sequel.desc(:created_at)).limit(5)
 
     return puts 'No activities saved!' if activities.empty?
 
     puts 'Activities:'
-    Activity.order(Sequel.desc(:created_at)).limit(5).each do |a|
+    activities.order(Sequel.desc(:created_at)).limit(5).each do |a|
       puts ''
       puts "activity: #{a[:activity]}"
       puts "type: #{a[:type]}"
