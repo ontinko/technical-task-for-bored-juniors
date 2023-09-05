@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../db_manager'
+require_relative '../models/activity'
 
 class List
   def self.call(args)
@@ -9,15 +9,24 @@ class List
   end
 
   def initialize(args)
-    @db_manager = DbManager.new
-    @failure = false
-    @message = ''
     @args = args
   end
 
   def call
     return puts 'Error: list command does not take arguments' unless @args.empty?
 
-    @db_manager.list_activities
+    activities = Activity.all
+
+    return puts 'No activities saved!' if activities.empty?
+
+    Activity.all.each do |a|
+      puts ''
+      puts "activity: #{a[:activity]}"
+      puts "accessibility: #{a[:accessibility]}"
+      puts "type: #{a[:type]}"
+      puts "participants: #{a[:participants]}"
+      puts "price: #{a[:price]}"
+      puts "\n"
+    end
   end
 end

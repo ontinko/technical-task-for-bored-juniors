@@ -3,7 +3,7 @@
 require_relative 'actions/list'
 require_relative 'actions/new'
 
-class MyProgram
+class CliHandler
   NEW_COMMAND = :new
   LIST_COMMAND = :list
 
@@ -39,5 +39,3 @@ class MyProgram
     end
   end
 end
-
-MyProgram.new(ARGV).call
