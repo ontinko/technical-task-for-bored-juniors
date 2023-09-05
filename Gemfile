@@ -10,6 +10,8 @@ gem 'rubocop', '~> 1.56'
 
 gem 'rubocop-performance', '~> 1.19'
 
-gem "pry", "~> 0.14.2"
+gem 'pry', '~> 0.14.2'
 
-gem "sqlite3", "~> 1.6"
+gem 'sqlite3', '~> 1.6'
+
+gem 'rspec', '~> 3.12'

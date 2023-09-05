@@ -2,7 +2,7 @@
 
 require 'sequel'
 
-DB = Sequel.sqlite('./bored.sqlite')
+DB = Sequel.sqlite('./db/db.sqlite')
 
 def setup_db
   return if DB.table_exists?(:activities)

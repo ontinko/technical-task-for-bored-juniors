@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'setup'
+require_relative 'db/setup'
 require_relative 'cli_handler'
 
 begin
