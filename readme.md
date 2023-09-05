@@ -18,6 +18,12 @@ If this doesn't work, make sure that the file is executable:
 chmod + x ./my_program
 ```
 
+To run tests:
+
+```sh
+rspec
+```
+
 ## Description
 
 For this challenge, you are going to use the API of [bored API](https://www.boredapi.com/). This API gives us a random activity to do every time you call it, for example, if you make the following call:
