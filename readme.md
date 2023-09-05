@@ -1,5 +1,23 @@
 # Technical Challenge for Juniors
 
+## Usage
+
+In order to run the program, execute the script `my_program` with your arguments, like so:
+
+```sh
+./my_program list
+# or
+./my_program new
+#or
+./my_program new --type recreational
+```
+
+If this doesn't work, make sure that the file is executable:
+
+```sh
+chmod + x ./my_program
+```
+
 For this challenge, you are going to use the API of [bored API](https://www.boredapi.com/). This API gives us a random activity to do every time you call it, for example, if you make the following call:
 
 ```
