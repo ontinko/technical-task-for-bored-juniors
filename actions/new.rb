@@ -36,11 +36,13 @@ class New < BaseAction
 
   def print_activity(activity)
     puts "activity: #{activity['activity']}"
-    puts "accessibility: #{activity['accessibility']}"
     puts "type: #{activity['type']}"
+    puts "accessibility: #{activity['accessibility']}"
     puts "participants: #{activity['participants']}"
     puts "price: #{activity['price']}"
-    puts "\n"
+    puts "key: #{activity['key']}"
+    puts "link: #{activity['link']}"
+    puts ''
   end
 
   def handle_error(message)

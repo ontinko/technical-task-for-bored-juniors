@@ -16,10 +16,12 @@ class List < BaseAction
     Activity.order(Sequel.desc(:created_at)).limit(5).each do |a|
       puts ''
       puts "activity: #{a[:activity]}"
-      puts "accessibility: #{a[:accessibility]}"
       puts "type: #{a[:type]}"
+      puts "accessibility: #{a[:accessibility]}"
       puts "participants: #{a[:participants]}"
       puts "price: #{a[:price]}"
+      puts "key: #{a[:key]}"
+      puts "link: #{a[:link]}"
     end
   end
 end

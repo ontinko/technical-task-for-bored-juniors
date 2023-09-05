@@ -45,10 +45,12 @@ RSpec.describe New do
 
       it 'prints out the activity and relevant message' do
         output_string = "activity: #{activity[:activity]}\n" \
-                        "accessibility: #{activity[:accessibility]}\n" \
                         "type: #{activity[:type]}\n" \
+                        "accessibility: #{activity[:accessibility]}\n" \
                         "participants: #{activity[:participants]}\n" \
                         "price: #{activity[:price]}\n" \
+                        "key: #{activity[:key]}\n" \
+                        "link: #{activity[:link]}\n" \
                         "\nActivity already saved!\n"
 
         expect { result }.to output(output_string).to_stdout
@@ -73,10 +75,12 @@ RSpec.describe New do
 
       it 'prints out the activity and relevant message' do
         output_string = "activity: #{new_activity['activity']}\n" \
-                        "accessibility: #{new_activity['accessibility']}\n" \
                         "type: #{new_activity['type']}\n" \
+                        "accessibility: #{new_activity['accessibility']}\n" \
                         "participants: #{new_activity['participants']}\n" \
                         "price: #{new_activity['price']}\n" \
+                        "key: #{new_activity['key']}\n" \
+                        "link: #{new_activity['link']}\n" \
                         "\nNew activity added!\n"
 
         expect { result }.to output(output_string).to_stdout

@@ -37,15 +37,19 @@ RSpec.describe List do
       it 'prints out the relevant message' do
         output_message = "Activities:\n\n" \
                          "activity: #{activity2[:activity]}\n" \
-                         "accessibility: #{activity2[:accessibility]}\n" \
                          "type: #{activity2[:type]}\n" \
+                         "accessibility: #{activity2[:accessibility]}\n" \
                          "participants: #{activity2[:participants]}\n" \
-                         "price: #{activity2[:price]}\n\n" \
+                         "price: #{activity2[:price]}\n" \
+                         "key: #{activity2[:key]}\n" \
+                         "link: #{activity2[:link]}\n\n" \
                          "activity: #{activity1[:activity]}\n" \
-                         "accessibility: #{activity1[:accessibility]}\n" \
                          "type: #{activity1[:type]}\n" \
+                         "accessibility: #{activity1[:accessibility]}\n" \
                          "participants: #{activity1[:participants]}\n" \
-                         "price: #{activity1[:price]}\n"
+                         "price: #{activity1[:price]}\n" \
+                         "key: #{activity1[:key]}\n" \
+                         "link: #{activity1[:link]}\n"
         expect { result }.to output(output_message).to_stdout
       end
     end
