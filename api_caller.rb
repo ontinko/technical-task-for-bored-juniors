@@ -23,7 +23,8 @@ class ApiCaller
     return handle_error('Failed request') if error_in_body?(response.body) || response.code != '200'
 
     @activity = JSON.parse(response.body)
-
+  rescue SocketError
+    handle_error('No connection')
   end
 
   def error
