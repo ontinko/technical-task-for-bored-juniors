@@ -19,7 +19,7 @@ class ApiCaller
     query_string = @args.empty? ? '' : "?#{build_query}"
     final_uri = URI("#{BASE_URI}#{query_string}")
     response = Net::HTTP.get_response(final_uri)
-    return handle_error('Failed request') if error_in_body?(response.body) || response.code != '200'
+    return handle_error('Invalid request') if error_in_body?(response.body) || response.code != '200'
 
     @activity = JSON.parse(response.body)
   rescue SocketError
