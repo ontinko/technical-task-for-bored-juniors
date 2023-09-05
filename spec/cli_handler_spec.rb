@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../cli_handler'
-require_relative '../errors/application_error'
+require_relative '../lib/cli_handler'
+require_relative '../lib/errors/application_error'
 require 'json'
 
 RSpec.describe CliHandler do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../api_caller'
-require_relative '../errors/application_error'
+require_relative '../lib/api_caller'
+require_relative '../lib/errors/application_error'
 require 'json'
 
 RSpec.describe ApiCaller do

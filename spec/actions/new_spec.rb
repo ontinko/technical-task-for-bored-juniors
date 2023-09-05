@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../actions/new'
-require_relative '../../errors/application_error'
+require_relative '../../lib/actions/new'
+require_relative '../../lib/errors/application_error'
 require 'json'
 
 RSpec.describe New do

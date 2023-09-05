@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'db/setup'
-require_relative 'cli_handler'
+require_relative 'lib/cli_handler'
 
 begin
   CliHandler.new(ARGV).call

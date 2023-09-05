@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../actions/list'
-require_relative '../../errors/application_error'
+require_relative '../../lib/actions/list'
+require_relative '../../lib/errors/application_error'
 
 RSpec.describe List do
   describe '.call' do
