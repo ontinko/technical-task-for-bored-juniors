@@ -5,6 +5,7 @@ require 'webmock/rspec'
 require 'sequel'
 
 DB = Sequel.connect('sqlite://db/test.sqlite3')
+BASE_URI = 'https://www.boredapi.com/api/activity/'
 
 unless DB.table_exists?(:activities)
   DB.create_table :activities do

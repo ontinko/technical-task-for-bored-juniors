@@ -4,8 +4,6 @@ require_relative '../cli_handler'
 require_relative '../errors/application_error'
 require 'json'
 
-BASE_URI = 'https://www.boredapi.com/api/activity/'
-
 RSpec.describe CliHandler do
   describe '.call' do
     subject(:handler) { described_class.new(argv) }

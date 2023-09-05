@@ -4,8 +4,6 @@ require_relative '../../actions/new'
 require_relative '../../errors/application_error'
 require 'json'
 
-BASE_URI = 'https://www.boredapi.com/api/activity/'
-
 RSpec.describe New do
   describe '.call' do
     subject(:result) { described_class.call(args) }
