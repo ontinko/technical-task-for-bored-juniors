@@ -2,18 +2,31 @@
 
 require_relative '../api_caller'
 require_relative '../errors/application_error'
+require 'json'
+
+BASE_URI = 'https://www.boredapi.com/api/activity/'
 
 RSpec.describe ApiCaller do
   describe '.call' do
     subject(:caller) { described_class.new(args) }
-    let(:args) do
-      {
-        'type' => 'recreational',
-        'minprice' => '0'
-      }
+    let(:args) { {} }
+    let(:response_body) { { activity: 'hehe', key: 'hoho' }.to_json }
+    let(:response_status) { 200 }
+
+    before do
+      stub_request(:get, BASE_URI)
+        .with(query: hash_including(args))
+        .to_return(body: response_body, status: response_status)
     end
 
     context 'when query string is valid' do
+      let(:args) do
+        {
+          'type' => 'recreational',
+          'minprice' => '0'
+        }
+      end
+
       it 'fetches data' do
         caller.call
 
@@ -26,8 +39,6 @@ RSpec.describe ApiCaller do
     end
 
     context 'when query string is empty' do
-      let(:args) { {} }
-
       it 'fetches data' do
         caller.call
 
@@ -41,6 +52,7 @@ RSpec.describe ApiCaller do
 
     context 'when query string is invalid' do
       let(:args) { { 'type' => 'nonexistent-type-123' } }
+      let(:response_body) { { 'error' => '' }.to_json }
 
       it 'raises ApplicationError' do
         expect { caller.call }.to raise_error(ApplicationError)

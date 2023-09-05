@@ -19,3 +19,5 @@ gem 'rspec', '~> 3.12'
 gem 'factory_bot', '~> 6.3'
 
 gem 'ffaker', '~> 2.22'
+
+gem 'webmock', '~> 3.19'

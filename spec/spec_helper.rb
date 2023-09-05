@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'support/factory_bot'
+require 'webmock/rspec'
 require 'sequel'
 
 DB = Sequel.connect('sqlite://db/test.sqlite3')
