@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'base_action'
 require_relative '../models/activity'
 require_relative '../api_caller'
 
-class New
+class New < BaseAction
   ARGS_MAPPING = {
     type: :type,
     participants: :participants,
@@ -13,15 +14,10 @@ class New
     accessibility_max: :maxaccessibility
   }.freeze
 
-  def self.call(args)
-    instance = new(args)
-    instance.call
-  end
-
   def initialize(args)
+    super
     @failure = false
     @message = ''
-    @args = args
   end
 
   def call

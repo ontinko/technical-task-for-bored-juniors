@@ -1,17 +1,9 @@
 # frozen_string_literal: true
 
 require_relative '../models/activity'
+require_relative 'base_action'
 
-class List
-  def self.call(args)
-    instance = new(args)
-    instance.call
-  end
-
-  def initialize(args)
-    @args = args
-  end
-
+class List < BaseAction
   def call
     return puts 'Error: list command does not take arguments' unless @args.empty?
 

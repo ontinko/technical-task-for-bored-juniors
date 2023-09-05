@@ -24,7 +24,6 @@ class ApiCaller
 
     @activity = JSON.parse(response.body)
 
-    self
   end
 
   def error
